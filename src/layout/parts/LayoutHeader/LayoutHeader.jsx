@@ -1,38 +1,40 @@
+import { Link } from 'react-router-dom';
+
 export default function LayoutHeader() {
     return (
-        <header class="container">
-            <div class="row">
-                <div class="col">
-                    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-                        <a class="navbar-brand" href="/">
+        <header className="container">
+            <div className="row">
+                <div className="col">
+                    <nav className="navbar navbar-expand-sm navbar-light bg-light">
+                        <Link className="navbar-brand" to={"/"}>
                             <img src="/img/header-logo.png" alt="Bosa Noga"/>
-                        </a>
+                        </Link>
 
-                        <div class="collapase navbar-collapse" id="navbarMain">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="/">Главная</a>
+                        <div className="collapase navbar-collapse" id="navbarMain">
+                            <ul className="navbar-nav mr-auto">
+                                <li className="nav-item active">
+                                    <Link className="nav-link" to={"/"}>Главная</Link>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/catalog">Каталог</a>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/catalog"}>Каталог</Link>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/about">О магазине</a>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/about"}>О магазине</Link>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/contacts">Контакты</a>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/contacts"}>Контакты</Link>
                                 </li>
                             </ul>
                             <div>
-                                <div class="header-controls-pics">
-                                    <div data-id="search-expander" class="header-controls-pic header-controls-search"></div>
-                                    <div class="header-controls-pic header-controls-cart">
-                                        <div class="header-controls-cart-full">1</div>
-                                        <div class="header-controls-cart-menu"></div>
-                                    </div>
+                                <div className="header-controls-pics">
+                                    <div data-id="search-expander" className="header-controls-pic header-controls-search"></div>
+                                    <Link to={"/cart"} className="header-controls-pic header-controls-cart">
+                                        <div className="header-controls-cart-full">1</div>
+                                        <div className="header-controls-cart-menu"></div>
+                                    </Link>
                                 </div>
-                                <form data-id="search-form" class="header-controls-search-form form-inline invisible">
-                                    <input class="form-control" placeholder="Поиск"/>
+                                <form data-id="search-form" className="header-controls-search-form form-inline invisible">
+                                    <input className="form-control" placeholder="Поиск"/>
                                 </form>
                             </div>
                         </div>

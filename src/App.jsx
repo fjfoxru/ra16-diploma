@@ -14,8 +14,8 @@ import View404 from './views/View404';
 function App() {
   return (
     <div className="page">
-      <LayoutHeader />
       <Router>
+      <LayoutHeader />
         <Switch>  
               <Route path="/catalog/:id([0-9]+)?:name([a-zA-Z]+)?" component={ViewProduct} />
               <Route path="/catalog" component={ViewCatalog} />
@@ -25,8 +25,8 @@ function App() {
               <Route path="/" exact component={ViewIndex} />
               <Route path="*" component={View404} />
         </Switch>
+        <LayoutFooter />
       </Router>
-      <LayoutFooter />
     </div>
   );
 }

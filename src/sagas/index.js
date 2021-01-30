@@ -1,7 +1,7 @@
 import { takeLatest, put, spawn, debounce, retry } from 'redux-saga/effects';
-import { getProductsSuccess, getProductsFailure, getCategoriesSuccess, getCategoriesFailure, getProductSuccess, getProductFailure } from '../actions/actionCreators';
-import { GET_PRODUCTS_REQUEST, GET_CATEGORIES_REQUEST, CHANGE_GET_PRODUCTS_REQUEST, GET_PRODUCT_REQUEST } from '../actions/actionTypes';
-import { getProducts, getProduct, getCategories } from '../api/index';
+import { getProductsSuccess, getProductsFailure, getCategoriesSuccess, getCategoriesFailure, getProductSuccess, getProductFailure, getTopSalesFailure, getTopSalesSuccess } from '../actions/actionCreators';
+import { GET_PRODUCTS_REQUEST, GET_CATEGORIES_REQUEST, CHANGE_GET_PRODUCTS_REQUEST, GET_PRODUCT_REQUEST, GET_TOP_SALES_REQUEST } from '../actions/actionTypes';
+import { getProducts, getProduct, getCategories, getTopSales } from '../api/index';
 
 
 // worker товар
@@ -38,6 +38,24 @@ function* watchGetProductsSaga() {
     yield takeLatest(GET_PRODUCTS_REQUEST, handleGetProductsSaga);
 }
 
+// worker top sales
+function* handleGetTopSalesSaga(action) {
+    try {
+        const retryCount = 3;
+        const retryDelay = 1 * 1000; // ms
+        const data = yield retry(retryCount, retryDelay, getTopSales);
+        yield put(getTopSalesSuccess(data));
+    } catch (e) {
+        yield put(getTopSalesFailure(e.message));
+    }
+}
+
+// watcher top sales
+function* watchGetTopSalesSaga() {
+    yield takeLatest(GET_TOP_SALES_REQUEST, handleGetTopSalesSaga);
+}
+
+
 // watcher запроса
 function* watchChangeGetProductsRequestSaga() {
     yield takeLatest(CHANGE_GET_PRODUCTS_REQUEST, handleGetProductsSaga);
@@ -66,4 +84,6 @@ export default function* saga() {
     yield spawn(watchGetProductsSaga);
     yield spawn(watchGetCategoriesSaga);
     yield spawn(watchChangeGetProductsRequestSaga);
+    yield spawn(watchGetTopSalesSaga);
+    
 }

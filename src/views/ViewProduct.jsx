@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductRequest, addProductToCart } from '../actions/actionCreators';
+import Banner from '../components/Banner';
+
 
 export default function ViewProduct({ match }) {
     const { product, loading, error } = useSelector(state => state.product);
@@ -32,23 +34,20 @@ export default function ViewProduct({ match }) {
 
 
     return (
-        <main class="container">
-        <div class="row">
-            <div class="col">
-                <div class="banner">
-                    <img src="/img/banner.jpg" class="img-fluid" alt="К весне готовы!"/>
-                    <h2 class="banner-header">К весне готовы!</h2>
-                </div>
+        <main className="container">
+        <div className="row">
+            <div className="col">
+                <Banner />
 
-                <section class="catalog-item">
-                    <h2 class="text-center">{product.title}</h2>
-                    <div class="row">
-                        <div class="col-5">
+                <section className="catalog-item">
+                    <h2 className="text-center">{product.title}</h2>
+                    <div className="row">
+                        <div className="col-5">
                             {/* <img src={Array.from(product.images)[0]}
                                 class="img-fluid" alt={product.title}/> */}
                         </div>
-                        <div class="col-7">
-                            <table class="table table-bordered">
+                        <div className="col-7">
+                            <table className="table table-bordered">
                                 <tbody>
                                     <tr>
                                         <td>Артикул</td>
@@ -76,18 +75,18 @@ export default function ViewProduct({ match }) {
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="text-center">
+                            <div className="text-center">
                                 <p>Размеры в наличии: 
-                                    {product.sizes && product.sizes.map(size => <span onClick={() => onSelectSize(size.size)} key={size.size} class={ size.size === selectedSize ? 'catalog-item-size catalog-item-size_selected' : 'catalog-item-size'}>{size.size}</span> )}
+                                    {product.sizes && product.sizes.map(size => <span onClick={() => onSelectSize(size.size)} key={size.size} className={ size.size === selectedSize ? 'catalog-item-size catalog-item-size_selected' : 'catalog-item-size'}>{size.size}</span> )}
                                 </p>
-                                <p>Количество: <span class="btn-group btn-group-sm pl-2">
-                                        <button class="btn btn-secondary" onClick={selectCountMinus}>-</button>
-                                        <span class="btn btn-outline-primary">{selectedCount}</span>
-                                        <button class="btn btn-secondary" onClick={selectCountPlus}>+</button>
+                                <p>Количество: <span className="btn-group btn-group-sm pl-2">
+                                        <button className="btn btn-secondary" onClick={selectCountMinus}>-</button>
+                                        <span className="btn btn-outline-primary">{selectedCount}</span>
+                                        <button className="btn btn-secondary" onClick={selectCountPlus}>+</button>
                                     </span>
                                 </p>
                             </div>
-                            {selectedSize && <button class="btn btn-danger btn-block btn-lg" onClick={addToCart}>В корзину</button>}
+                            {selectedSize && <button className="btn btn-danger btn-block btn-lg" onClick={addToCart}>В корзину</button>}
                         </div>
                     </div>
                 </section>

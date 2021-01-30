@@ -23,7 +23,12 @@ export default function ContainerCategories() {
 
     return (
         <>
-        {loading && <div>Загрузка...</div>}
+        {loading && <div className="preloader">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>}
         {error && <div><span>Ошибка...</span><button onClick={handleRepeatRequest}>Повторить запрос</button></div>}
         <ul className="catalog-categories nav justify-content-center">
             {categories && categories.map(category => <li key={category.title}><a onClick={() => onSelectCategory(category.id)} className="nav-link" href="#">{category.title}</a></li>)}

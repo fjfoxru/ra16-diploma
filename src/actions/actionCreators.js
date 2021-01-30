@@ -10,6 +10,9 @@ import {
     GET_CATEGORIES_SUCCESS,
     CHANGE_GET_PRODUCTS_REQUEST,
     ADD_PRODUCT_TO_CART,
+    GET_TOP_SALES_REQUEST,
+    GET_TOP_SALES_FAILURE,
+    GET_TOP_SALES_SUCCESS
   } from './actionTypes';
   import store from '../store';
   
@@ -26,6 +29,21 @@ import {
   
   export const getProductsSuccess = products => ({
     type: GET_PRODUCTS_SUCCESS,
+    payload: {products},
+  });
+
+  export const getTopSalesRequest = () => ({
+    type: GET_TOP_SALES_REQUEST,
+    payload: {},
+  });
+  
+  export const getTopSalesFailure = errorItem => ({
+    type: GET_TOP_SALES_FAILURE,
+    payload: {errorItem},
+  });
+  
+  export const getTopSalesSuccess = products => ({
+    type: GET_TOP_SALES_SUCCESS,
     payload: {products},
   });
   

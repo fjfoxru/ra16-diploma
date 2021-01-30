@@ -7,12 +7,13 @@ export default function ContainerCatalog() {
 
     const handleLoadMore = (evt) => {
         evt.preventDefault();
+        console.log('s');
         dispatch(changeGetProductsRequest({offset: requestParams.offset + 6 })); 
     }
 
     return (
-        <div class="text-center">
-           {products.length > 5 && <button class="btn btn-outline-primary" onClick={handleLoadMore}>Загрузить ещё</button>}
+        <div className="text-center">
+           {products.length > 5 && <button className="btn btn-outline-primary" onClick={handleLoadMore}>Загрузить ещё</button>}
         </div>
         
     )

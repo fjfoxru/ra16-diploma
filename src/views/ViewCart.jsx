@@ -1,3 +1,6 @@
+import Banner from '../components/Banner';
+
+
 export default function ViewCart() {
 
 
@@ -6,10 +9,7 @@ export default function ViewCart() {
         <main className="container">
         <div className="row">
             <div className="col">
-                <div className="banner">
-                    <img src="/img/banner.jpg" className="img-fluid" alt="К весне готовы!"/>
-                    <h2 className="banner-header">К весне готовы!</h2>
-                </div>
+                <Banner />
 
                 <section className="cart">
                     <h2 className="text-center">Корзина</h2>
@@ -58,7 +58,7 @@ export default function ViewCart() {
                                 <label for="address">Адрес доставки</label>
                                 <input className="form-control" id="address" placeholder="Адрес доставки"/>
                             </div>
-                            <div class="form-group form-check">
+                            <div className="form-group form-check">
                                 <input type="checkbox" className="form-check-input" id="agreement"/>
                                 <label className="form-check-label" for="agreement">Согласен с правилами доставки</label>
                             </div>

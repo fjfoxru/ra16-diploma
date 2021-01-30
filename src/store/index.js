@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import cartReducer from '../reducers/cart';
 import productReducer from '../reducers/product';
 import productsReducer from '../reducers/products';
+import topsalesReducer from '../reducers/topsales';
 import categoriesReducer from '../reducers/categories';
 import saga from '../sagas';
 
@@ -11,6 +12,7 @@ const reducer = combineReducers({
     product: productReducer,
     products: productsReducer,
     categories: categoriesReducer,
+    topsales: topsalesReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

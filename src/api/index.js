@@ -17,6 +17,15 @@ export const getProducts = async (paramsForRequest) => {
     return await response.json();
 }
 
+export const getTopSales = async () => {
+    
+    const response = await fetch(process.env.REACT_APP_TOP_SALES_URL);
+    if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+    return await response.json();
+}
+
 export const getProduct = async (id) => {
     const response = await fetch(`${process.env.REACT_APP_PRODUCTS_URL}/${id}`);
     if (!response.ok) {

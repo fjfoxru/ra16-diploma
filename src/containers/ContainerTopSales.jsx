@@ -1,21 +1,20 @@
 import {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProductsRequest } from '../actions/actionCreators';
+import { getTopSalesRequest } from '../actions/actionCreators';
 import CardProduct from '../components/cards/CardProduct';
 
-export default function ContainerCatalog() {
-    const { products, loading, error } = useSelector(state => state.products);
-    const { requestParams } = useSelector(state => state.products);
+export default function ContainerTopSales() {
+    const { products, loading, error } = useSelector(state => state.topsales);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getProductsRequest());
+        dispatch(getTopSalesRequest());
     }, [dispatch]);
 
     const handleRepeatRequest = (evt) => {
         evt.preventDefault();
         
-        dispatch(getProductsRequest()); 
+        dispatch(getTopSalesRequest()); 
     }
 
     return (
