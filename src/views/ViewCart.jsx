@@ -1,9 +1,13 @@
 import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { sendOrder } from '../api/index';
 
 export default function ViewCart() {
     const { products } = useSelector(state => state.cart);
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
 
     const totalPrice = (products) => {
         if (!products.length) return 0;
@@ -13,6 +17,26 @@ export default function ViewCart() {
         return sum;
     }
     const totalSum = totalPrice(products);
+
+
+    const onSubmitOrder = (evt) => {
+        evt.preventDefault();
+        const order = {
+            owner: {
+                phone: phone,
+                address: address,
+            },
+            items: 
+                [...products.map(el => {
+                    let item = {};
+                    item.id = el.data.id;
+                    item.price = el.data.price;
+                    item.count = el.count;
+                    return item;
+                })]
+        }
+        sendOrder(order);
+    }
 
     return (
         <main className="container">
@@ -58,21 +82,21 @@ export default function ViewCart() {
                     <h2 className="text-center">Оформить заказ</h2>
                     <div className="card">
                     {/* <div className="card" style="max-width: 30rem; margin: 0 auto;">    */}
-                        <form className="card-body">
+                        {products.length && <form className="card-body" onSubmit={onSubmitOrder}>
                             <div className="form-group">
                                 <label htmlFor="phone">Телефон</label>
-                                <input className="form-control" id="phone" placeholder="Ваш телефон"/>
+                                <input className="form-control" id="phone" placeholder="Ваш телефон" onChange={(evt) => setPhone(evt.target.value)} value={phone} />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="address">Адрес доставки</label>
-                                <input className="form-control" id="address" placeholder="Адрес доставки"/>
+                                <input className="form-control" id="address" placeholder="Адрес доставки" onChange={(evt) => setAddress(evt.target.value)} value={address}/>
                             </div>
                             <div className="form-group form-check">
                                 <input type="checkbox" className="form-check-input" id="agreement"/>
                                 <label className="form-check-label" htmlFor="agreement">Согласен с правилами доставки</label>
                             </div>
                             <button type="submit" className="btn btn-outline-secondary">Оформить</button>
-                        </form>
+                        </form>}
 
                     </div>
                 </section>

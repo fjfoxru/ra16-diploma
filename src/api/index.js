@@ -43,3 +43,17 @@ export const getCategories = async () => {
     return await response.json();
 }
 
+
+export const sendOrder = async (order) => {
+    const response = await fetch(`${process.env.REACT_APP_SEND_ORDER}`, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json;'
+    },
+    body: JSON.stringify(order)
+    });
+    if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+    return await response.json();
+}

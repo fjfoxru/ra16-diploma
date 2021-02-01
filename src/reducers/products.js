@@ -7,7 +7,7 @@ import {
   
   const initialState = {
     products: [],
-    requestParams: {},
+    requestParams: {offset: 0},
     loading: false,
     error: null,
   };
