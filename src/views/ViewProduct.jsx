@@ -16,7 +16,7 @@ export default function ViewProduct({ match }) {
 
 
     const addToCart = () => {
-        dispatch(addProductToCart({id: product.id, size: selectedSize, count: selectedCount}));
+        dispatch(addProductToCart({data: product, size: selectedSize, count: selectedCount}));
     }
 
     const onSelectSize = (size) => {
@@ -80,7 +80,7 @@ export default function ViewProduct({ match }) {
                                     {product.sizes && product.sizes.map(size => <span onClick={() => onSelectSize(size.size)} key={size.size} className={ size.size === selectedSize ? 'catalog-item-size catalog-item-size_selected' : 'catalog-item-size'}>{size.size}</span> )}
                                 </p>
                                 <p>Количество: <span className="btn-group btn-group-sm pl-2">
-                                        <button className="btn btn-secondary" onClick={selectCountMinus}>-</button>
+                                        {selectedCount > 0 && <button className="btn btn-secondary" onClick={selectCountMinus}>-</button>}
                                         <span className="btn btn-outline-primary">{selectedCount}</span>
                                         <button className="btn btn-secondary" onClick={selectCountPlus}>+</button>
                                     </span>

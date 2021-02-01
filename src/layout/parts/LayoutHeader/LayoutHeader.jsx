@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function LayoutHeader() {
+    const { products } = useSelector(state => state.cart);
     return (
         <header className="container">
             <div className="row">
@@ -29,7 +31,7 @@ export default function LayoutHeader() {
                                 <div className="header-controls-pics">
                                     <div data-id="search-expander" className="header-controls-pic header-controls-search"></div>
                                     <Link to={"/cart"} className="header-controls-pic header-controls-cart">
-                                        <div className="header-controls-cart-full">1</div>
+                                        <div className="header-controls-cart-full">{products.length > 0 ? products.length : 0}</div>
                                         <div className="header-controls-cart-menu"></div>
                                     </Link>
                                 </div>
