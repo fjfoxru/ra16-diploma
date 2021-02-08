@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTopSalesRequest } from '../actions/actionCreators';
+import { getTopSalesRequest } from '../redux/topSales/actions';
 import CardProduct from '../components/cards/CardProduct';
 
 export default function ContainerTopSales() {

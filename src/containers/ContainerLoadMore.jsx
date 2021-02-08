@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { changeGetProductsRequest } from '../actions/actionCreators';
+import { changeGetProductsRequest } from '../redux/products/actions';
 
 export default function ContainerCatalog() {
     const { requestParams, products } = useSelector(state => state.products);

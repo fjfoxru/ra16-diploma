@@ -2,7 +2,7 @@ import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { sendOrder } from '../api/index';
+import { sendOrder } from '../utils/api';
 
 export default function ViewCart() {
     const { products } = useSelector(state => state.cart);

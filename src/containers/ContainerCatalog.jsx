@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProductsRequest } from '../actions/actionCreators';
+import { getProductsRequest } from '../redux/products/actions';
 import CardProduct from '../components/cards/CardProduct';
 
 export default function ContainerCatalog() {

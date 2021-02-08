@@ -10,7 +10,7 @@ export const getProducts = async (paramsForRequest) => {
     }
     const params = new URLSearchParams(actualParams);
     let response;
-    Object.keys(actualParams).length ? response = await fetch(`${process.env.REACT_APP_PRODUCTS_URL}?${params}`) : response = await fetch(`${process.env.REACT_APP_PRODUCTS_URL}`);  
+    Object.keys(actualParams).length ? response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/items?${params}`) : response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/items`);  
     if (!response.ok) {
         throw new Error(response.statusText);
     }
@@ -19,7 +19,7 @@ export const getProducts = async (paramsForRequest) => {
 
 export const getTopSales = async () => {
     
-    const response = await fetch(process.env.REACT_APP_TOP_SALES_URL);
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/top-sales`);
     if (!response.ok) {
         throw new Error(response.statusText);
     }
@@ -27,7 +27,7 @@ export const getTopSales = async () => {
 }
 
 export const getProduct = async (id) => {
-    const response = await fetch(`${process.env.REACT_APP_PRODUCTS_URL}/${id}`);
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/items/${id}`);
     if (!response.ok) {
         throw new Error(response.statusText);
     }
@@ -36,7 +36,7 @@ export const getProduct = async (id) => {
 
 
 export const getCategories = async () => {
-    const response = await fetch(`${process.env.REACT_APP_CATEGORIES_URL}`);
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/categories`);
     if (!response.ok) {
         throw new Error(response.statusText);
     }
@@ -45,7 +45,7 @@ export const getCategories = async () => {
 
 
 export const sendOrder = async (order) => {
-    const response = await fetch(`${process.env.REACT_APP_SEND_ORDER}`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/order`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json;'

@@ -1,11 +1,11 @@
-import { createStore, combineReducers, applyMiddleware, compose, } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import cartReducer from '../reducers/cart';
-import productReducer from '../reducers/product';
-import productsReducer from '../reducers/products';
-import topsalesReducer from '../reducers/topsales';
-import categoriesReducer from '../reducers/categories';
-import saga from '../sagas';
+import cartReducer from './cart/reducer';
+import productReducer from './product/reducer';
+import productsReducer from './products/reducer';
+import topsalesReducer from './topSales/reducer';
+import categoriesReducer from './categories/reducer';
+import saga from './sagas';
 
 const reducer = combineReducers({
     cart: cartReducer,

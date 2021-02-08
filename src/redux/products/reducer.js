@@ -3,7 +3,7 @@ import {
     GET_PRODUCTS_FAILURE,
     GET_PRODUCTS_SUCCESS,
     CHANGE_GET_PRODUCTS_REQUEST,
-  } from '../actions/actionTypes'
+  } from './types'
   
   const initialState = {
     products: [],

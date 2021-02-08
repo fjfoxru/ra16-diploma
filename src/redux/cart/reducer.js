@@ -1,6 +1,6 @@
 import {
     ADD_PRODUCT_TO_CART,
-  } from '../actions/actionTypes'
+  } from './types'
   
   const initialState = {
     products: [],

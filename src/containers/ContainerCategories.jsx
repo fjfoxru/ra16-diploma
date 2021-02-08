@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCategoriesRequest, changeGetProductsRequest } from '../actions/actionCreators';
-
+import { getCategoriesRequest } from '../redux/categories/actions';
+import { changeGetProductsRequest } from '../redux/products/actions';
 
 export default function ContainerCategories() {
     const { categories, loading, error } = useSelector(state => state.categories);

@@ -1,36 +1,36 @@
 import {
-    GET_TOP_SALES_REQUEST,
-    GET_TOP_SALES_FAILURE,
-    GET_TOP_SALES_SUCCESS
-  } from '../actions/actionTypes'
+    GET_CATEGORIES_REQUEST,
+    GET_CATEGORIES_FAILURE,
+    GET_CATEGORIES_SUCCESS,
+  } from './types'
   
   const initialState = {
-    products: [],
-    requestParams: {},
+    categories: [],
     loading: false,
     error: null,
   };
   
-  export default function topsalesReducer(state = initialState, action) {
+  export default function categoriesReducer(state = initialState, action) {
     switch (action.type) {
-      case GET_TOP_SALES_REQUEST:
+      case GET_CATEGORIES_REQUEST:
         return {
           ...state,
           loading: true,
           error: null,
         };
-      case GET_TOP_SALES_FAILURE:
+      case GET_CATEGORIES_FAILURE:
         const {error} = action.payload;
         return {
           ...state,
           loading: false,
           error,
         };
-      case GET_TOP_SALES_SUCCESS:
-        const {products} = action.payload;
+      case GET_CATEGORIES_SUCCESS:
+        let {categories} = action.payload;
+        categories.push({title: 'Все', categoryId: null});
         return {
           ...state,
-          products,
+          categories,
           loading: false,
           error: null,
         };

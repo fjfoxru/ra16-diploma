@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProductRequest, addProductToCart } from '../actions/actionCreators';
+import { getProductRequest } from '../redux/product/actions';
+import { addProductToCart } from '../redux/cart/actions';
 import Banner from '../components/Banner';
 
 
